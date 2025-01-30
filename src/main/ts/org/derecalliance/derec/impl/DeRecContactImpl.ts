@@ -1,3 +1,10 @@
+//two classes, one to serialize + deserialize and create object
+//second class uses first class to create contact messages
+
+import { DeRecContact } from 'api-typescript/src/interfaces/DeRecContact';
+
+
+//create class to keep all information in for serialization and deserialziation
 class ContactMessage {
     publicEncryptionKeyId: number;
     publicEncryptionKey: string;
@@ -28,6 +35,7 @@ class ContactMessage {
         this.transportUri = transportUri;
     }
 
+    //taking inputs from parameters and storing as a byte array 
     serialize(): Uint8Array {
         try {
             const message = JSON.stringify(this);
@@ -38,7 +46,11 @@ class ContactMessage {
         }
     }
 
-    static deserialize(data: Uint8Array): ContactMessage {
+    /*
+   taking serialized byte code and turning it back to a string
+   then turning string to an object
+    */
+   static deserialize(data: Uint8Array): ContactMessage {
         try {
             const messageString = new TextDecoder().decode(data);
             const parsedMessage = JSON.parse(messageString);

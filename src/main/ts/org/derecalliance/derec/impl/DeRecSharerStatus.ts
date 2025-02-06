@@ -20,6 +20,6 @@ export class DeRecSharerStatus {
     }
 
     setRecoveryMode(isRecovering: boolean): void {
-        this.recoveryMode = isRecovering;
+        this.recoveryMode = isRecovering; //does not return anything
     }
 }

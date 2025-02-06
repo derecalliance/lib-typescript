@@ -2,11 +2,8 @@
 //indentity and pairing status identity stored as object
 //return status of connection to helper
 
-import { DeRecPairingStatus } from 'api-typescript/src/interfaces/DeRecPairingStatus';
-import { DeRecIdentity } from 'api-typescript/src/interfaces/DeRecIdentity';
-
 //get indentity of helper
-export class DeRecHelperStatus implements DeRecPairingStatus {
+export class DeRecHelperStatus {
     private id: DeRecIdentity;
     private lastVerificationTime: Date;
 

@@ -3,14 +3,8 @@
 //inputs for paramters are capturing changes made by the sharer
 //helper is notified about changes
 
-import { HelperNotificationType } from 'api-typescript/src/interfaces/HelperNotificationType';
-import { DeRecIdentity } from 'api-typescript/src/interfaces/DeRecIdentity';
-import { SecretId } from 'api-typescript/src/interfaces/DeRecSecret';
-import { DeRecHelperNotification } from 'api-typescript/src/interfaces/DeRecHelperNotification';
-
-
 //get event details that notify the system/helper of changes made by sharer
-export class DeRecHelperNotificationImpl implements DeRecHelperNotification {
+export class DeRecHelperNotification {
     private type: HelperNotificationType;
     private sharerId: DeRecIdentity;
     private secretId: SecretId | null;

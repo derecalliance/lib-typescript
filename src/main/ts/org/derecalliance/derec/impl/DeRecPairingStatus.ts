@@ -1,7 +1,5 @@
 //get status between sharer and helper
 
-import { PairingStatus } from 'api-typescript/src/interfaces/PairingStatus';
-
 export interface DeRecPairingStatus {
     getStatus(): PairingStatus;
 }
@@ -10,7 +8,7 @@ export interface DeRecPairingStatus {
 represents pairing status of helper that returns pairing 
 status through method
 */
-export class DeRecHelperStatus implements DeRecPairingStatus {
+export class DeRecHelperStatus {
     private status: PairingStatus;
 
     constructor(status: PairingStatus) {

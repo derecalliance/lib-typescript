@@ -19,8 +19,11 @@
 //indentity and pairing status identity stored as object
 //return status of connection to helper
 
+import { DeRecPairingStatus } from '../interfaces/DeRecPairingStatus';
+import { DeRecIdentity } from './DeRecIdentity';
+
 //get indentity of helper
-export class DeRecHelperStatus {
+export class DeRecHelperStatusImpl implements DeRecHelperStatus {
     private id: DeRecIdentity;
     private lastVerificationTime: Date;
 

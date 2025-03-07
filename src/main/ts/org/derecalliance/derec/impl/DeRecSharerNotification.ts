@@ -1,7 +1,12 @@
 //create class that holds necessary properties for sharer's notification
 //methods return specific notification details
 
-export class SharerNotification {
+import { DeRecVersion } from './DeRecVersion';
+import { DeRecHelperStatus } from './DeRecHelperStatus';
+import { DeRecSecret } from './DeRecSecret';
+import { SharerNotificationSeverity, SharerNotificationType } from './/SharerNotificationType';
+
+export class DeRecSharerNotificationImpl implements DeRecSharerNotification {
     private notificationType: SharerNotificationType;
     private notificationMessage: string;
     private notificationVersion: DeRecVersion | null;

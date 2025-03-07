@@ -18,7 +18,11 @@
 //impl to track and report sharer status
 //checks if sharer is in recovery mode
 
-export class DeRecSharerStatus {
+import { DeRecIdentity } from './DeRecIdentity';
+import { DeRecPairingStatus } from './DeRecPairingStatus';
+import { PairingStatus } from './PairingStatus';
+
+export class DeRecSharerStatusImpl implements DeRecSharerStatus {
     private sharerId: DeRecIdentity;
     private recoveryMode: boolean;
 

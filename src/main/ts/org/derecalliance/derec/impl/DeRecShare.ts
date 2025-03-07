@@ -20,7 +20,10 @@
 //remove() method checks if link is alredy removed
 //if not, marks it as removed and updates enum state
 
-export class DeRecShare {
+import { SecretId } from './DeRecSecret';
+import { DeRecSharerStatus } from './DeRecSharerStatus';
+
+export class DeRecShareImpl implements DeRecShare {
     private sharer: DeRecSharerStatus();
     private secretId: SecrectId();
     private versions: number[];

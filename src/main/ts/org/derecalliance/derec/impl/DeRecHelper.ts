@@ -2,8 +2,13 @@
 // filters the shares based on the sharerStatus and extracts the secretId for each share
 // returns an array of SecretId corresponding to the provided sharerStatus
 
+import { NotificationResponse } from './NotificationResponse';
+import { SecretId } from './DeRecSecret';
+import { DeRecSharerStatus } from './DeRecSharerStatus';
+import { DeRecHelperNotification } from './DeRecHelperNotification';
+import { DeRecShare } from './DeRecShare';
 
-export class DeRecHelper {
+export class DeRecHelperImpl implements DeRecHelper {
     private shares: DeRecShare[] = [];
     private sharers: DeRecSharerStatus[] = [];
     private listener?: (notification: DeRecHelperNotification) => NotificationResponse;

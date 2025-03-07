@@ -2,7 +2,10 @@
 //track which helpers are protecting this version
 //ensure secure storage and retrieval of secret
 
-export class DeRecVersion {
+import { DeRecSecret } from './DeRecSecret';
+import { DeRecHelperStatus } from './DeRecHelperStatus';
+
+export class DeRecVersionImpl implements DeRecVersion {
     private secret: DeRecSecret;
     private versionNumber: number;
     private protectedValue: Uint8Array;

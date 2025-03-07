@@ -2,8 +2,12 @@
 //provides synchronous and asynchronous methods for adding, removing, and updating helpers and secret data.
 //class also includes status-checking methods and functionality to close the secret, preventing further modifications.
 
+import { DeRecHelperStatus } from './DeRecHelperStatus';
+import { DeRecIdentity } from './DeRecIdentity';
+import { DeRecVersion } from './DeRecVersion';
 
-export class DeRecSecret {
+
+export class DeRecSecretImpl implements DeRecSecret {
     private secretId: SecretId;
     private description: string;
     private bytesToProtect: Uint8Array;

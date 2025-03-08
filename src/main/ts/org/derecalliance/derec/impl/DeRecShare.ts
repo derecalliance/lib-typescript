@@ -23,22 +23,22 @@
 import { SecretId } from './DeRecSecret';
 import { DeRecSharerStatus } from './DeRecSharerStatus';
 
-export class DeRecShareImpl implements DeRecShare {
-    private sharer: DeRecSharerStatus();
-    private secretId: SecrectId();
-    private versions: number[];
+export class DeRecShare {
+    public sharerStatus: DeRecSharerStatus;
+    public secretId: SecretId;
+    public versionNumbers: number[];
     private isRemoved: boolean;
     
-    //initialize the properties
+    // Initialize the properties
     constructor(sharer: DeRecSharerStatus, secretId: SecretId, versions: number[]) {
-        this.sharer = sharer;
+        this.sharerStatus = sharer;
         this.secretId = secretId;
-        this.versions = versions;
-        this.isRemoved = false; //assuming connection between sharer and secret is still active
+        this.versionNumbers = versions;
+        this.isRemoved = false; // Assuming connection between sharer and secret is still active
     }
 
     getSharer(): DeRecSharerStatus {
-        return this.sharer;
+        return this.sharerStatus;
     }
 
     getSecretId(): SecretId {
@@ -46,16 +46,16 @@ export class DeRecShareImpl implements DeRecShare {
     }
 
     getVersions(): number[] {
-        return this.versions;
+        return this.versionNumbers;
     }
 
-    //handles removal process when triggered externally
+    // Handles removal process when triggered externally
     remove(): boolean {
         if (this.isRemoved) {
-            return false; //returns false if share is alredy marked as removed (no action needed)
+            return false; // Returns false if share is already marked as removed (no action needed)
         }
-        this.isRemoved = true; //marks share as removed (if not already)
-        this.sharer.setStatus('PENDING_REMOVAL'); //updates sharer's status, awaiting unpairing
-        return true; //indicates removal request successfully processed
+        this.isRemoved = true; // Marks share as removed (if not already)
+        this.sharerStatus.setRecoveryMode(true); // Updates sharer's status to recovery mode instead of setStatus
+        return true; // Indicates removal request successfully processed
     }
 }

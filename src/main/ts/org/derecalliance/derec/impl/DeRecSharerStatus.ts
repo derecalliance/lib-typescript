@@ -22,7 +22,7 @@ import { DeRecIdentity } from './DeRecIdentity';
 import { DeRecPairingStatus } from './DeRecPairingStatus';
 import { PairingStatus } from './PairingStatus';
 
-export class DeRecSharerStatusImpl implements DeRecSharerStatus {
+export class DeRecSharerStatus {
     private sharerId: DeRecIdentity;
     private recoveryMode: boolean;
 

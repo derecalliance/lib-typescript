@@ -8,7 +8,7 @@ import { DeRecSharerStatus } from './DeRecSharerStatus';
 import { DeRecHelperNotification } from './DeRecHelperNotification';
 import { DeRecShare } from './DeRecShare';
 
-export class DeRecHelperImpl implements DeRecHelper {
+export class DeRecHelper {
     private shares: DeRecShare[] = [];
     private sharers: DeRecSharerStatus[] = [];
     private listener?: (notification: DeRecHelperNotification) => NotificationResponse;

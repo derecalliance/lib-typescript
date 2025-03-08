@@ -17,7 +17,7 @@
 
 //get status between sharer and helper
 
-import { PairingStatus } from './/PairingStatus';
+import { PairingStatus } from './PairingStatus';
 
 export interface DeRecPairingStatus {
     getStatus(): PairingStatus;
@@ -27,7 +27,7 @@ export interface DeRecPairingStatus {
 represents pairing status of helper that returns pairing 
 status through method
 */
-export class DeRecPairingStatusImpl implements DeRecPairingStatus {
+export class DeRecPairingStatus {
     private status: PairingStatus;
 
     constructor(status: PairingStatus) {

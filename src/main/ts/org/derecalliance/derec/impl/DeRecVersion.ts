@@ -5,7 +5,7 @@
 import { DeRecSecret } from './DeRecSecret';
 import { DeRecHelperStatus } from './DeRecHelperStatus';
 
-export class DeRecVersionImpl implements DeRecVersion {
+export class DeRecVersion {
     private secret: DeRecSecret;
     private versionNumber: number;
     private protectedValue: Uint8Array;
@@ -43,4 +43,4 @@ export class DeRecVersionImpl implements DeRecVersion {
     getProtectingHelpers(): DeRecHelperStatus[] {
         return this.protectingHelpers;
     }
-
+}

@@ -7,7 +7,7 @@ import { DeRecIdentity } from './DeRecIdentity';
 import { DeRecVersion } from './DeRecVersion';
 
 
-export class DeRecSecretImpl implements DeRecSecret {
+export class DeRecSecret {
     private secretId: SecretId;
     private description: string;
     private bytesToProtect: Uint8Array;

@@ -25,7 +25,7 @@ import { DeRecIdentity } from './DeRecIdentity';
 import { SecretId } from './DeRecSecret';
 
 //get event details that notify the system/helper of changes made by sharer
-export class DeRecHelperNotificationImpl implements DeRecHelperNotification {
+export class DeRecHelperNotification {
     private type: HelperNotificationType;
     private sharerId: DeRecIdentity;
     private secretId: SecretId | null;

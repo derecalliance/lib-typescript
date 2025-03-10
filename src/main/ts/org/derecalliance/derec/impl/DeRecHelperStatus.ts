@@ -19,29 +19,20 @@
 //indentity and pairing status identity stored as object
 //return status of connection to helper
 
-import { DeRecPairingStatus } from '../interfaces/DeRecPairingStatus';
+import { DeRecPairingStatus } from './DeRecPairingStatus';
 import { DeRecIdentity } from './DeRecIdentity';
+import { PairingStatus } from './PairingStatus';
 
-/**
- * Representation of a helper as perceived by a sharer
- */
-export interface DeRecHelperStatus extends DeRecPairingStatus {
-    /**
-     * Gets the identity of the helper
-     */
-    getId(): DeRecIdentity;
-
-    getLastVerificationTime(): Date;
-}
 
 /**
  * Implementation of the DeRecHelperStatus interface
  */
-export class DeRecHelperStatusImpl implements DeRecHelperStatus {
+export class DeRecHelperStatus extends DeRecPairingStatus {
     private id: DeRecIdentity;
     private lastVerificationTime: Date;
 
-    constructor(id: DeRecIdentity, lastVerificationTime: Date) {
+    constructor(id: DeRecIdentity, lastVerificationTime: Date, pairingStatus: PairingStatus) {
+        super(pairingStatus);
         this.id = id;
         this.lastVerificationTime = lastVerificationTime;
     }

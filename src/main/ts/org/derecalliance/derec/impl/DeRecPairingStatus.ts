@@ -32,7 +32,7 @@ export class DeRecPairingStatus {
 
     constructor(status: PairingStatus) {
         if (!status) {
-            console.error("Error: PiringStatus is needed");
+            console.error("Error: PairingStatus is needed");
             throw new Error("Pairing status is needed");
         }
         this.status = status;
@@ -40,7 +40,7 @@ export class DeRecPairingStatus {
 
     getStatus(): PairingStatus {
         if (!this.status) {
-            console.error("Error: PairingStatus is not defined").
+            console.error("Error: PairingStatus is not defined");
             throw new Error("PairingStatus is not defined");
         }
         return this.status; //return pair status

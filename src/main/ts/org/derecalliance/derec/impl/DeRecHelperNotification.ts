@@ -20,9 +20,9 @@
 //inputs for paramters are capturing changes made by the sharer
 //helper is notified about changes
 
-import { HelperNotificationType } from './/HelperNotificationType';
+import { HelperNotificationType } from './HelperNotificationType';
 import { DeRecIdentity } from './DeRecIdentity';
-import { SecretId } from './DeRecSecret';
+import { SecretId } from './SecretId';
 
 //get event details that notify the system/helper of changes made by sharer
 export class DeRecHelperNotification {
@@ -38,12 +38,12 @@ export class DeRecHelperNotification {
             throw new Error("Invalid type");
         }
 
-        if (!sharerId || typeof sharerId !== 'object') {
+        if (!sharerId || !(sharerId instanceof DeRecIdentity)) {
             console.error("Invalid sharerId: Must be a valid DeRecIdentity object");
             throw new Error("Invalid sharerId");
         }
 
-        if (type === 'someSpecificType' && secretId === null) {
+        if (secretId === null) {
             console.error("secretId is required for this notification type");
             throw new Error("secretId is required");
         }

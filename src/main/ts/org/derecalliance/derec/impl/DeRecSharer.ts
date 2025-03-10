@@ -1,6 +1,35 @@
-import { DeRecSecret, SecretId } from './DeRecSecret';
+/*
+ * Copyright (c) DeRec Alliance and its Contributors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { DeRecSecret } from './DeRecSecret';
+import { SecretId } from './SecretId';
 import { DeRecIdentity } from './DeRecIdentity';
 import { DeRecSharerNotification } from './DeRecSharerNotification';
+
+/**
+ * Options for creating a new secret
+ */
+interface NewSecretOptions {
+    description: string;
+    bytesToProtect: Uint8Array;
+    helperIds?: DeRecIdentity[];
+    recovery: boolean;
+    secretId?: SecretId;
+}
 
 /**
  * A factory for and container of Secrets in this API
@@ -12,52 +41,43 @@ export class DeRecSharer {
     private secrets: Map<string, DeRecSecret> = new Map();
     private listener: (notification: DeRecSharerNotification) => void = () => {};
 
-    // Method signatures (overloads)
-    newSecret(description: string, bytesToProtect: Uint8Array, helperIds: DeRecIdentity[], recovery: boolean): DeRecSecret;
-    newSecret(secretId: SecretId, description: string, bytesToProtect: Uint8Array, helperIds: DeRecIdentity[], recovery: boolean): DeRecSecret;
-    newSecret(description: string, bytesToProtect: Uint8Array, recovery: boolean): DeRecSecret;
-    newSecret(secretId: SecretId, description: string, bytesToProtect: Uint8Array, recovery: boolean): DeRecSecret;
-
-    // Single method implementation
-    newSecret(
-        secretIdOrDescription: string | SecretId, 
-        description?: string, 
-        bytesToProtect?: Uint8Array, 
-        helperIds?: DeRecIdentity[], 
-        recovery?: boolean
+    // Create a new secret with an auto-generated SecretId
+    newSecretFromDescription(
+        description: string,
+        bytesToProtect: Uint8Array,
+        helperIds?: DeRecIdentity[],
+        recovery = false
     ): DeRecSecret {
-        if (typeof secretIdOrDescription === "string") {
-            // Case 1: newSecret(description, bytesToProtect, helperIds, recovery)
-            if (description && bytesToProtect && helperIds && recovery !== undefined) {
-                const secretId = this.generateSecretId();
-                const secret = new DeRecSecret(secretId, secretIdOrDescription, bytesToProtect);
-                this.secrets.set(secretId.toString(), secret);
-                return secret;
-            }
-            // Case 2: newSecret(description, bytesToProtect, recovery)
-            if (description && bytesToProtect && recovery !== undefined) {
-                const secretId = this.generateSecretId();
-                const secret = new DeRecSecret(secretId, secretIdOrDescription, bytesToProtect);
-                this.secrets.set(secretId.toString(), secret);
-                return secret;
-            }
-        } else {
-            // Case 3: newSecret(secretId, description, bytesToProtect, helperIds, recovery)
-            if (description && bytesToProtect && helperIds && recovery !== undefined) {
-                const secret = new DeRecSecret(secretIdOrDescription, description, bytesToProtect);
-                this.secrets.set(secretIdOrDescription.toString(), secret);
-                return secret;
-            }
-            // Case 4: newSecret(secretId, description, bytesToProtect, recovery)
-            if (description && bytesToProtect && recovery !== undefined) {
-                const secret = new DeRecSecret(secretIdOrDescription, description, bytesToProtect);
-                this.secrets.set(secretIdOrDescription.toString(), secret);
-                return secret;
-            }
+        const secretId = this.generateSecretId();
+        const secret = new DeRecSecret(secretId, description, bytesToProtect);
+        this.secrets.set(secretId.toString(), secret);
+
+        // Handle helperIds if provided
+        if (helperIds && helperIds.length > 0) {
+            // Additional logic for handling helpers could go here
         }
-    
-        throw new Error("Invalid parameters for newSecret");
-    }    
+
+        return secret;
+    }
+
+    // Create a new secret with a provided SecretId
+    newSecretFromSecretId(
+        secretId: SecretId,
+        description: string,
+        bytesToProtect: Uint8Array,
+        helperIds?: DeRecIdentity[],
+        recovery = false
+    ): DeRecSecret {
+        const secret = new DeRecSecret(secretId, description, bytesToProtect);
+        this.secrets.set(secretId.toString(), secret);
+
+        // Handle helperIds if provided
+        if (helperIds && helperIds.length > 0) {
+            // Additional logic for handling helpers could go here
+        }
+
+        return secret;
+    }
 
     getSecret(secretId: SecretId): DeRecSecret | null {
         return this.secrets.get(secretId.toString()) || null;

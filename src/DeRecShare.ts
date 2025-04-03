@@ -20,7 +20,7 @@
 //remove() method checks if link is alredy removed
 //if not, marks it as removed and updates enum state
 
-import { SecretId } from './DeRecSecret';
+import { SecretId } from './SecretId';
 import { DeRecSharerStatus } from './DeRecSharerStatus';
 
 export class DeRecShare {

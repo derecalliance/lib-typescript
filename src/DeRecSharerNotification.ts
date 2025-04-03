@@ -21,7 +21,7 @@
 import { DeRecVersion } from './DeRecVersion';
 import { DeRecHelperStatus } from './DeRecHelperStatus';
 import { DeRecSecret } from './DeRecSecret';
-import { SharerNotificationSeverity, SharerNotificationType } from './/SharerNotificationType';
+import { SharerNotificationSeverity, type SharerNotificationType } from './SharerNotificationType';
 
 export class DeRecSharerNotification {
     private notificationType: SharerNotificationType;

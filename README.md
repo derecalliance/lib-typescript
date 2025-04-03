@@ -1,5 +1,8 @@
 # lib-typescript
  the corollary to github.com/derecalliance/lib-java , for typescript
+
+ This library is currently under development and is not ready for use.
+
 ## Prerequisites
 1. Clone and build the [DeRec cryptography library repository](https://github.com/derecalliance/cryptography)
 

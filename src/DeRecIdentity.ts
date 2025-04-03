@@ -156,5 +156,5 @@ export class DeRecIdentity {
             `pubEncryptionKeyDigest: ${this.publicEncryptionKeyDigest ? btoa(String.fromCharCode(...this.publicEncryptionKeyDigest)) : "null"}, ` +
             `pubSignatureKeyDigest: ${this.publicSignatureKeyDigest ? btoa(String.fromCharCode(...this.publicSignatureKeyDigest)) : "null"}`;
     }
-    
+
 }

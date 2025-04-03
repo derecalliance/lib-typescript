@@ -19,7 +19,7 @@
  * Implementation of the Id class
  */
 export class SecretId {
-    private bytes: Uint8Array;
+    private bytes!: Uint8Array;
 
     constructor(bytes: Uint8Array) {
         this.setBytes(bytes);
@@ -51,11 +51,15 @@ export class SecretId {
     }
 
     hashCode(): number {
+        
         let hash = 0;
-        for (let i = 0; i < this.bytes.length; i++) {
-            hash = ((hash << 5) - hash) + this.bytes[i];
+
+        if (!this.bytes) return hash;
+
+        this.bytes.forEach(byte => {
+            hash = ((hash << 5) - hash) + byte;
             hash |= 0; // Convert to 32bit integer
-        }
+        });
         return hash;
     }
 }

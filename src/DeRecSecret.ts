@@ -22,8 +22,10 @@
 import { DeRecHelperStatus } from './DeRecHelperStatus';
 import { DeRecIdentity } from './DeRecIdentity';
 import { DeRecVersion } from './DeRecVersion';
+import { PairingStatus } from './PairingStatus';
 import { SecretId } from './SecretId';
 
+type NonceToHelperMap = Map<bigint, DeRecIdentity>;
 
 export class DeRecSecret {
     private secretId: SecretId;
@@ -42,7 +44,7 @@ export class DeRecSecret {
     }
 
     addHelpers(nonceAndHelperIds: NonceToHelperMap): void {
-        nonceAndHelperIds.forEach((helper, nonce) => {
+        nonceAndHelperIds.forEach((helper: DeRecIdentity, nonce: bigint) => {
             this.helpers.set(nonce, helper);
         });
         console.log("Helpers added.");
@@ -52,7 +54,12 @@ export class DeRecSecret {
         const promises = Array.from(nonceAndHelperIds.entries()).map(([nonce, helper]) => {
             return new Promise<DeRecHelperStatus>((resolve) => {
                 this.helpers.set(nonce, helper);
-                resolve(DeRecHelperStatus.SUCCESS);
+                const helperStatus = new DeRecHelperStatus(
+                    helper,
+                    new Date(),
+                    PairingStatus.PAIRED
+                );
+                resolve(helperStatus);
             });
         });
         console.log("Helpers added asynchronously.");
@@ -60,7 +67,13 @@ export class DeRecSecret {
     }
 
     getHelperStatuses(): DeRecHelperStatus[] {
-        return Array.from(this.helpers.values()).map(() => DeRecHelperStatus.SUCCESS);
+        return Array.from(this.helpers.entries()).map(([_, helper]) => {
+            return new DeRecHelperStatus(
+                helper,
+                new Date(),
+                PairingStatus.PAIRED
+            );
+        });
     }
 
     removeHelpers(helperIds: DeRecIdentity[]): void {
@@ -82,7 +95,12 @@ export class DeRecSecret {
                         this.helpers.delete(nonce);
                     }
                 }
-                resolve(DeRecHelperStatus.SUCCESS);
+                const helperStatus = new DeRecHelperStatus(
+                    helper,
+                    new Date(),
+                    PairingStatus.REMOVED
+                );
+                resolve(helperStatus);
             });
         });
         console.log("Helpers removed asynchronously.");
@@ -99,7 +117,7 @@ export class DeRecSecret {
         if (description) {
             this.description = description;
         }
-        const newVersion = new DeRecVersion(); // Assuming DeRecVersion has a default constructor
+        const newVersion = new DeRecVersion(this, this.versions.size + 1, this.bytesToProtect);
         this.versions.set(this.versions.size + 1, newVersion);
         console.log("Secret updated.");
         return newVersion;
@@ -110,7 +128,16 @@ export class DeRecSecret {
     updateAsync(bytesToProtect: Uint8Array, description: string): Promise<DeRecVersion>;
     updateAsync(bytesToProtect?: Uint8Array, description?: string): Promise<DeRecVersion> {
         return new Promise<DeRecVersion>((resolve) => {
-            const newVersion = this.update(bytesToProtect, description);
+            let newVersion: DeRecVersion;
+
+            if (bytesToProtect && description) {
+                newVersion = this.update(bytesToProtect, description);
+            } else if (bytesToProtect) {
+                newVersion = this.update(bytesToProtect);
+            } else {
+                newVersion = this.update();
+            }
+            
             resolve(newVersion);
         });
     }

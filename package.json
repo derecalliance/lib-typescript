@@ -1,0 +1,37 @@
+{
+  "name": "@derecalliance/lib-typescript",
+  "version": "0.1.1",
+  "description": "Typescript implementation library for the DeRec protocol",
+  "keywords": [
+    "derec"
+  ],
+  "homepage": "https://github.com/derecalliance/lib-typescript#readme",
+  "bugs": {
+    "url": "https://github.com/derecalliance/lib-typescript/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derecalliance/lib-typescript.git"
+  },
+  "license": "Apache-2.0",
+  "author": "DeRecAlliance",
+  "type": "module",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.2"
+  }
+}

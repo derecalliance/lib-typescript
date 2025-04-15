@@ -1,6 +1,6 @@
 {
   "name": "@derecalliance/lib-typescript",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Typescript implementation library for the DeRec protocol",
   "keywords": [
     "derec"

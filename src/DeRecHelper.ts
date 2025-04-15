@@ -19,11 +19,11 @@
 // filters the shares based on the sharerStatus and extracts the secretId for each share
 // returns an array of SecretId corresponding to the provided sharerStatus
 
-import { NotificationResponse } from './NotificationResponse';
-import { SecretId } from './SecretId';
-import { DeRecSharerStatus } from './DeRecSharerStatus';
-import { DeRecHelperNotification } from './DeRecHelperNotification';
-import { DeRecShare } from './DeRecShare';
+import { NotificationResponse } from './NotificationResponse.js';
+import { SecretId } from './SecretId.js';
+import { DeRecSharerStatus } from './DeRecSharerStatus.js';
+import { DeRecHelperNotification } from './DeRecHelperNotification.js';
+import { DeRecShare } from './DeRecShare.js';
 
 export class DeRecHelper {
     private shares: DeRecShare[] = [];

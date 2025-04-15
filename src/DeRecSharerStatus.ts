@@ -18,9 +18,7 @@
 //impl to track and report sharer status
 //checks if sharer is in recovery mode
 
-import { DeRecIdentity } from './DeRecIdentity';
-import { DeRecPairingStatus } from './DeRecPairingStatus';
-import { PairingStatus } from './PairingStatus';
+import { DeRecIdentity } from './DeRecIdentity.js';
 
 export class DeRecSharerStatus {
     private sharerId: DeRecIdentity;

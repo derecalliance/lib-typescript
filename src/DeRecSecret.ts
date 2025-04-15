@@ -19,11 +19,11 @@
 //provides synchronous and asynchronous methods for adding, removing, and updating helpers and secret data.
 //class also includes status-checking methods and functionality to close the secret, preventing further modifications.
 
-import { DeRecHelperStatus } from './DeRecHelperStatus';
-import { DeRecIdentity } from './DeRecIdentity';
-import { DeRecVersion } from './DeRecVersion';
-import { PairingStatus } from './PairingStatus';
-import { SecretId } from './SecretId';
+import { DeRecHelperStatus } from './DeRecHelperStatus.js';
+import { DeRecIdentity } from './DeRecIdentity.js';
+import { DeRecVersion } from './DeRecVersion.js';
+import { PairingStatus } from './PairingStatus.js';
+import { SecretId } from './SecretId.js';
 
 type NonceToHelperMap = Map<bigint, DeRecIdentity>;
 

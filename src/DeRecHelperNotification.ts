@@ -20,9 +20,9 @@
 //inputs for paramters are capturing changes made by the sharer
 //helper is notified about changes
 
-import { HelperNotificationType } from './HelperNotificationType';
-import { DeRecIdentity } from './DeRecIdentity';
-import { SecretId } from './SecretId';
+import { HelperNotificationType } from './HelperNotificationType.js';
+import { DeRecIdentity } from './DeRecIdentity.js';
+import { SecretId } from './SecretId.js';
 
 //get event details that notify the system/helper of changes made by sharer
 export class DeRecHelperNotification {

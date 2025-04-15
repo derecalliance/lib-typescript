@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { createMessageDigest, base64ToUint8Array } from "./utils/crypto";
+import { createMessageDigest, base64ToUint8Array } from "./utils/crypto.js";
 
 export class DeRecIdentity {
     private name: string; // human readable identification

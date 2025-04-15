@@ -18,10 +18,10 @@
 //create class that holds necessary properties for sharer's notification
 //methods return specific notification details
 
-import { DeRecVersion } from './DeRecVersion';
-import { DeRecHelperStatus } from './DeRecHelperStatus';
-import { DeRecSecret } from './DeRecSecret';
-import { SharerNotificationSeverity, type SharerNotificationType } from './SharerNotificationType';
+import { DeRecVersion } from './DeRecVersion.js';
+import { DeRecHelperStatus } from './DeRecHelperStatus.js';
+import { DeRecSecret } from './DeRecSecret.js';
+import { SharerNotificationSeverity, type SharerNotificationType } from './SharerNotificationType.js';
 
 export class DeRecSharerNotification {
     private notificationType: SharerNotificationType;

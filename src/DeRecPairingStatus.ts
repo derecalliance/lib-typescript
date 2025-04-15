@@ -17,7 +17,7 @@
 
 //get status between sharer and helper
 
-import { PairingStatus } from './PairingStatus';
+import { PairingStatus } from './PairingStatus.js';
 
 export interface DeRecPairingStatus {
     getStatus(): PairingStatus;

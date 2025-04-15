@@ -19,8 +19,8 @@
 //track which helpers are protecting this version
 //ensure secure storage and retrieval of secret
 
-import { DeRecSecret } from './DeRecSecret';
-import { DeRecHelperStatus } from './DeRecHelperStatus';
+import { DeRecSecret } from './DeRecSecret.js';
+import { DeRecHelperStatus } from './DeRecHelperStatus.js';
 
 export class DeRecVersion {
     private secret: DeRecSecret;

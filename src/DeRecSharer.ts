@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-import { DeRecSecret } from './DeRecSecret';
-import { SecretId } from './SecretId';
-import { DeRecIdentity } from './DeRecIdentity';
-import { DeRecSharerNotification } from './DeRecSharerNotification';
+import { DeRecSecret } from './DeRecSecret.js';
+import { SecretId } from './SecretId.js';
+import { DeRecIdentity } from './DeRecIdentity.js';
+import { DeRecSharerNotification } from './DeRecSharerNotification.js';
 
 /**
  * Options for creating a new secret

@@ -19,9 +19,9 @@
 //indentity and pairing status identity stored as object
 //return status of connection to helper
 
-import { DeRecPairingStatus } from './DeRecPairingStatus';
-import { DeRecIdentity } from './DeRecIdentity';
-import { PairingStatus } from './PairingStatus';
+import { DeRecPairingStatus } from './DeRecPairingStatus.js';
+import { DeRecIdentity } from './DeRecIdentity.js';
+import { PairingStatus } from './PairingStatus.js';
 
 
 /**
